@@ -1,0 +1,39 @@
+# demo
+demo:
+  datasource:
+    jdbc-url: jdbc:postgresql://localhost:5432/secc
+    username: postgres
+    password: postgres
+
+
+# server
+server:
+  port: 8080
+  servlet:
+    context-path: /api/demo
+
+
+# spring
+spring:
+  data:
+    web:
+      pageable:
+        default-page-size: 100
+  datasource:
+    hikari:
+      minimum-idle: 0
+      maximum-pool-size: 70
+      idle-timeout: 30000
+      max-lifetime: 2000000
+      connection-timeout: 30000
+    platform: postgres
+  jpa:
+    database: default
+    hibernate:
+      ddl-auto: none
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true
+  main:
+    banner-mode: off

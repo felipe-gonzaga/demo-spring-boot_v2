@@ -1,0 +1,37 @@
+------------------------------------------------------------------------------
+
+create table tb_dep_departamento (
+	dep_codigo integer primary key,
+	dep_descricao varchar(50) not null
+);
+
+create table tb_fun_funcionario (
+	fun_cpf varchar(11) primary key,
+  	fun_nome varchar(50) not null,
+  	fun_dtnascimento date not null,
+  	fun_endereco varchar(100) not null,
+  	fun_cep char(8) not null,
+  	fun_cidade varchar(50) not null,
+  	fun_telefone varchar(9) not null,
+  	fun_dsfuncao varchar(50) not null,
+  	fun_vlsalario numeric(8,2) not null,
+  	dep_codigo integer references tb_dep_departamento(dep_codigo) not null
+ );
+
+------------------------------------------------------------------------------
+
+insert into tb_dep_departamento values(1,'PRESIDENCIA');
+insert into tb_dep_departamento values(2,'DIRETORIA');
+insert into tb_dep_departamento values(3,'INFORMATICA');
+
+insert into tb_fun_funcionario values('10467478007', 'AUGUSTA SANTOS ROCHA', '29/09/1978', 'RUA A', '49000500', 'ARACAJU', '111111111', 'PRESIDENTE', 25000.00, 1);
+insert into tb_fun_funcionario values('84670034057', 'RAFAELA DISRAELI NOVAES', '17/09/1991', 'RUA B', '49000600', 'ARACAJU', '222222222', 'DIRETOR', 20000.00, 2);
+insert into tb_fun_funcionario values('19531836035', 'CARLOS CEZAR FIGUEREDO', '03/05/1981', 'RUA C', '49000700', 'ARACAJU', '333333333', 'ANALISTA DE SISTEMAS', 5000.00, 3);
+insert into tb_fun_funcionario values('99682537070', 'MARCELO PANINI SANTOS', '31/12/1995', 'RUA D', '49000800', 'ARACAJU', '111111111', 'DESENVOLVEDOR BACK-END', 3500.00, 3);
+
+------------------------------------------------------------------------------
+
+select * from tb_dep_departamento;
+select * from tb_fun_funcionario;
+
+------------------------------------------------------------------------------

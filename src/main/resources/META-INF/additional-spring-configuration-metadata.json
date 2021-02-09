@@ -1,0 +1,19 @@
+{
+	"properties": [
+		{
+			"name": "demo.datasource.jdbc-url",
+			"type": "java.lang.String",
+			"description": "jdbc-url do banco de dados demo"
+		},
+		{
+			"name": "demo.datasource.username",
+			"type": "java.lang.String",
+			"description": "username do banco de dados demo"
+		},
+		{
+			"name": "demo.datasource.password",
+			"type": "java.lang.String",
+			"description": "password do banco de dados demo"
+		}
+	]
+}

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="2.0" xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd">
+
+	<named-native-query name="Departamento.buscarPorId" result-class="br.gov.se.secc.demo.entity.Departamento">
+		<query>
+      	<![CDATA[
+        	select * from tb_dep_departamento where dep_codigo = ?1
+      	]]>
+    	</query>
+	</named-native-query>
+
+	<named-native-query name="Departamento.buscarPorDescricao" result-class="br.gov.se.secc.demo.entity.Departamento">
+		<query>
+      	<![CDATA[
+        	select * from tb_dep_departamento where upper(dep_descricao) like upper(?1 || '%') order by dep_descricao
+      	]]>
+    	</query>
+	</named-native-query>
+
+	<named-native-query name="Departamento.buscarTodos" result-class="br.gov.se.secc.demo.entity.Departamento">
+		<query>
+      	<![CDATA[
+        	select * from tb_dep_departamento order by dep_descricao
+      	]]>
+    	</query>
+	</named-native-query>
+
+	<named-native-query	name="Departamento.cadastrar">
+		<query>
+      	<![CDATA[
+       		insert into tb_dep_departamento (dep_codigo, dep_descricao) values(?1, upper(?2))
+      	]]>
+    	</query>
+	</named-native-query>
+
+	<named-native-query	name="Departamento.atualizar">
+		<query>
+      	<![CDATA[
+   			update tb_dep_departamento set dep_descricao = upper(?2) where dep_codigo = ?1
+      	]]>
+    	</query>
+	</named-native-query>
+
+	<named-native-query name="Departamento.remover">
+		<query>
+      	<![CDATA[
+    		delete from tb_dep_departamento where dep_codigo = ?1
+	    ]]>
+	    </query>
+	</named-native-query>
+
+</entity-mappings>

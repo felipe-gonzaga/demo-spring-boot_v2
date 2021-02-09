@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="2.0" xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd">
+
+	<named-native-query name="Funcionario.buscarPorId">
+		<query>
+      	<![CDATA[
+        	select fun.fun_cpf as cpf, fun.fun_nome as nome, fun.fun_dtnascimento as dtNascimento, fun.fun_dsfuncao as dsFuncao, fun.fun_vlsalario as vlSalario, 
+        	dep.dep_descricao as dsDepartamento from tb_fun_funcionario fun join tb_dep_departamento dep on (fun.dep_codigo = dep.dep_codigo) where fun.fun_cpf = ?1
+      	]]>
+    	</query>
+	</named-native-query>
+
+	<named-native-query name="Funcionario.buscarPorNome">
+		<query>
+      	<![CDATA[
+        	select fun.fun_cpf as cpf, fun.fun_nome as nome, fun.fun_dtnascimento as dtNascimento, fun.fun_dsfuncao as dsFuncao, fun.fun_vlsalario as vlSalario, 
+        	dep.dep_descricao as dsDepartamento from tb_fun_funcionario fun join tb_dep_departamento dep on (fun.dep_codigo = dep.dep_codigo)
+        	where upper(fun.fun_nome) like upper(?1 || '%') order by fun.fun_nome
+      	]]>
+    	</query>
+	</named-native-query>
+
+	<named-native-query name="Funcionario.buscarPorCodDepto">
+		<query>
+      	<![CDATA[
+        	select fun.fun_cpf as cpf, fun.fun_nome as nome, fun.fun_dtnascimento as dtNascimento, fun.fun_dsfuncao as dsFuncao, fun.fun_vlsalario as vlSalario, 
+        	dep.dep_descricao as dsDepartamento from tb_fun_funcionario fun join tb_dep_departamento dep on (fun.dep_codigo = dep.dep_codigo) 
+        	where fun.dep_codigo = ?1 order by fun.fun_nome
+      	]]>
+    	</query>
+	</named-native-query>
+
+	<named-native-query name="Funcionario.buscarTodos">
+		<query>
+      	<![CDATA[
+        	select fun.fun_cpf as cpf, fun.fun_nome as nome, fun.fun_dtnascimento as dtNascimento, fun.fun_dsfuncao as dsFuncao, fun.fun_vlsalario as vlSalario, 
+        	dep.dep_descricao as dsDepartamento from tb_fun_funcionario fun join tb_dep_departamento dep on (fun.dep_codigo = dep.dep_codigo) order by fun.fun_nome
+      	]]>
+    	</query>
+	</named-native-query>
+
+</entity-mappings>
